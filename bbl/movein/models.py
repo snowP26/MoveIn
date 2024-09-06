@@ -13,3 +13,12 @@ class Tenant(models.Model):
 class Room(models.Model):
     # is occupied
     Room_isOccupied = models.BooleanField(default=False)
+    Room_image = models.ImageField(upload_to='assets', default='assets/test1.png')
+
+class Reports(models.Model):
+    # report body tesxt
+    Reports_body = models.TextField()
+    Reports_author = models.CharField(max_length=128)
+    # Reports_date =
+    Reports_isCompleted = models.BooleanField(default=False)
+     
