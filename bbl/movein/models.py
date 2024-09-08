@@ -22,3 +22,4 @@ class Reports(models.Model):
     # Reports_date =
     Reports_isCompleted = models.BooleanField(default=False)
      
+# omsim
