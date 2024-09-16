@@ -8,6 +8,7 @@ django = "*"
 psycopg2 = "*"
 django-phonenumber-field = {extras = ["phonenumbers"], version = "*"}
 pillow = "*"
+ipython = "*"
 
 [dev-packages]
 
