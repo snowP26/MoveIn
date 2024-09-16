@@ -81,7 +81,7 @@ DATABASES = {
         'NAME': 'movein',
         'USER': 'postgres',
         'PASSWORD': 'sv@rt',
-        'HOST': 'localhost',
+        'HOST': '49.145.37.7',
         'PORT': '5432'
     }
 }
