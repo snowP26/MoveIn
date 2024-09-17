@@ -9,10 +9,16 @@ class Tenant(models.Model):
     # Tenant_phone = PhoneNumberField(unique=True,)
     Tenant_firstName = models.CharField(max_length=32)
     Tenant_lastName = models.CharField(max_length=32)
+
+    def __str__(self):
+        return()
     
 class Property(models.Model):
     Property_name = models.TextField()
     Property_roomNum = models.IntegerField()
+
+    def __str__(self):
+        return(f"ID: {self.id} Name: {self.Property_name} Room Number: {self.Property_roomNum}")
 
 
 
