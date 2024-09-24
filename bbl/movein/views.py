@@ -4,3 +4,9 @@ from django.shortcuts import render
 
 def index(request):
     return render(request, 'movein/index.html')
+
+def t_login(request):
+    return render(request, 'movein/t_login.html')
+
+def l_room(request):
+    return render(request, 'movein/l_roompage.html')
