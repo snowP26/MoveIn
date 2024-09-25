@@ -10,3 +10,6 @@ def t_login(request):
 
 def l_room(request):
     return render(request, 'movein/l_roompage.html')
+
+def t_myRoom(request):
+    return render(request, 'movein/t_myRoom.html')
