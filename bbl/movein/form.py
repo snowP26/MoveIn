@@ -24,5 +24,5 @@ class signupForm(forms.Form):
 class announcementForm(forms.ModelForm):
     class Meta:
         model = Announcements
-        fields = ['Announce_header', 'Announce_body', 'Announce_image']
+        fields = ['Announce_header', 'Announce_body']
 

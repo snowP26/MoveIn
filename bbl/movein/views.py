@@ -6,22 +6,23 @@ from django.contrib.auth.models import User
 from django.views import View
 from .form import *
 
-# Create your views here.
-def t_myRoom(request):
-    return render(request, 'movein/t_myRoom.html')
-
 def index(request):
     return render(request, 'movein/index.html')
 
-def t_login(request):
-    return render(request, 'movein/t_login.html')
-
+# Owner Views
 def l_room(request):
+    context = {
+        'active_link': 'rooms',
+    }
     return render(request, 'movein/l_roompage.html')
 
 def l_announcement(request):
     announcements = Announcements.objects.all()
-    return render(request, 'movein/l_announcement.html', {'announcements': announcements})
+    context = {
+        'announcements': announcements,
+        'active_link': 'announcements',
+    }
+    return render(request, 'movein/l_announcement.html', context)
 
 def announcement_view(request):
     if request.method == "POST":
@@ -36,3 +37,13 @@ def announcement_view(request):
 
 def announcement_create(request):
     return render(request, 'movein/announcement_create.html')
+
+
+# Tenant Views
+def t_myRoom(request):
+    context = {
+        'active_link': 'rooms',
+    }
+
+    return render(request, 'movein/t_myRoom.html', context)
+
