@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Move In | My Room</title>
+    <title>Move In | Announcements</title>
 
     <link rel="icon" href="{% static 'images/logo-purple.png' %}">
 
@@ -20,7 +20,7 @@
 
     <!--css-->
     <link rel="stylesheet" href="{% static 'styles/navstyle.css' %}">
-    <link rel="stylesheet" href="{% static 'styles/myRoomStyle.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/roomstyle.css' %}">
 
 </head>
 
@@ -37,15 +37,15 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li>
+                    <li class="nav-item">
                         <a class="nav-link active p-3 fw-bold" aria-current="page" href="#"
-                        style="color: #F8E71C;">My Room</a>
+                            style="color: #ffffff;">Rooms</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link p-3" href="#" style="color: #ffffff;">Bills</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link p-3" href="#" style="color: #ffffff;">Announcements</a>
+                        <a class="nav-link p-3" href="#" style="color: #F8E71C;">Announcements</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link p-3" href="#" style="color: #ffffff;">Reports</a>
@@ -85,8 +85,10 @@
         <article class="banner">
             <div class="container-fluid">
                 <div class="container text-light p-5">
-                    <h1 class="display-4">My Room</h1>
-                    <a href="#" class="btn btn-primary">Contact Landlord</a>
+                    <h1 class="display-4">Announcements</h1>
+                    <form action="{% url 'createAnnouncement' %}">
+                        <button type="submit" class="btn btn-primary">Create Announcement</button>
+                    </form>
                 </div>
             </div>
         </article>
@@ -94,34 +96,19 @@
     <!--end of banner-->
 
     <!--content-->
-    <div class="content">
-        <div class="content container mt-5">
-            <div class="row">
-                <!-- Image Container -->
-                <div class="col-md-6 mb-4">
-                    <div class="image-box">
-                        <!-- Update the image source using Django's static tag -->
-                        <img src="{% static 'images/bedroom-1.png' %}" alt="Room Image" class="img-fluid rounded shadow">
-                    </div>
-                </div>
-        
-                <!-- Room Details Container -->
-                <div class="col-md-6">
-                    <div class="room-details p-4">
-                        <h2>Room 1</h2>
-                        <p><strong>Occupied by:</strong> Gavril Mariano</p>
-                        <p><strong>Room Details:</strong></p>
-                        <ul>
-                            <li>38 sqm</li>
-                            <li>Newly-renovated</li>
-                            <li>Semi-furnished</li>
-                            <li>Includes brand new air conditioner & water heater</li>
-                        </ul>
-                    </div>
-                </div>
+    {% for announcement in announcements %}
+            <div class="list-group-item">
+                <h5 class="mb-1">{{ announcement.Announce_header }}</h5>
+                <p class="mb-1">{{ announcement.Announce_body }}</p>
+                {% if announcement.Announce_image %}
+                    <img src="{{ announcement.Announce_image.url }}" alt="{{ announcement.Announce_header }}" style="max-width: 100%; height: auto;">
+                {% endif %}
+                <small>Posted on: {{ announcement.Announce_date }}</small>
             </div>
-        </div>
-    </div>
+        {% empty %}
+            <div class="alert alert-info">No announcements available.</div>
+        {% endfor %}
+    
     <!--end of content-->
 
     <!--popper and js-->

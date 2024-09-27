@@ -1,10 +1,18 @@
 from django.urls import path
-from .views import index, t_login, l_room, t_myRoom
-
+from .views import *
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('', index, name="index"),
-    path('tenant/login', t_login, name="tenant_login"),
-    path('owner/rooms', l_room, name="tenant_room_page"),
-    path('owner/bills', t_myRoom, name="landlord_bills_page")
-]
+    
+    # OWNER URLS
+    path('owner/rooms', l_room, name="tenant_room"),
+    path('owner/announcements', l_announcement, name="landlord_announcement"),
+    path('owner/announcements/create', announcement_view, name="createAnnouncement"),
+
+    # TENANT URLS
+    path('tenant/myRoom', t_myRoom, name="myRoom"),
+    
+
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

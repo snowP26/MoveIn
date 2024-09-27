@@ -78,17 +78,9 @@ WSGI_APPLICATION = 'bbl.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+# https://docs.djangoproject.com/en/5.1/ref/settings/#databasesD
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #     'NAME': 'railway',
-    #     'USER': 'postgres',
-    #     'PASSWORD': 'wysKBOtrqYNqYsTtQTIbDoRpIKOalDEc',
-    #     'HOST': 'postgres.railway.internal',
-    #     'PORT': '5432'
-    # }
 
     "default":
     dj_database_url.config(default=DATABASE_URL, conn_max_age = 1800),
@@ -132,7 +124,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# MEDIA_URL = 'images/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
@@ -142,3 +135,8 @@ STATICFILES_DIRS = (
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+TIME_ZONE = 'Asia/Manila'
+USE_TZ = True
+
+LOGIN_REDIRECT_URL = 'myRoom'
